@@ -1,9 +1,6 @@
 ﻿using Blog.Models;
 using Blog.Models.Dao;
-using Blog.Providers;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Blog.Controllers
 {
@@ -15,16 +12,15 @@ namespace Blog.Controllers
 
         public IActionResult Index()
         {
-            using (BlogContext ctx = new BlogContext())
-            {
-                return ctx.Post.ToList();
-            }
+            PostDao dao = new PostDao();
+            return View(dao.Lista());
         }
 
         public IActionResult Novo()
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult AdicionaPost(Post novo)
         {
@@ -33,6 +29,37 @@ namespace Blog.Controllers
             dao.Adiciona(novo);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Categoria([Bind(Prefix = "Id")]string categoria)
+        {
+            PostDao dao = new PostDao();
+            return View("Index", dao.BuscaCategoria(categoria));
+        }
+
+        public IActionResult RemovePost(int id)
+        {
+            PostDao dao = new PostDao();
+            dao.Remove(id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult EditaPost(Post post)
+        {
+            PostDao dao = new PostDao();
+            dao.Atualiza(post);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Visualiza(int id)
+        {
+            PostDao dao = new PostDao();
+            Post post = dao.FindPost(id);
+
+            return View("Visualiza", post);
         }
     }
 }

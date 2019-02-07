@@ -1,7 +1,9 @@
 ﻿using Blog.Providers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Blog.Models.Dao
 {
@@ -11,35 +13,15 @@ namespace Blog.Models.Dao
         {
             try
             {
-                List<Post> listaPost = new List<Post>();
-
-                using (SqlConnection conexao = ConnectionFactory.GetConnection())
+                using (BlogContext ctx = new BlogContext())
                 {
-                    SqlCommand cmd = conexao.CreateCommand();
-
-                    cmd.CommandText = "SELECT * FROM POST";
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        Post p = new Post();
-
-                        p.Id = Convert.ToInt32(reader["Id"]);
-                        p.Titulo = Convert.ToString(reader["Titulo"]);
-                        p.Resumo = Convert.ToString(reader["Resumo"]);
-                        p.Categoria = Convert.ToString(reader["Categoria"]);
-
-                        listaPost.Add(p);
-                    };
+                    return ctx.Post.ToList();
                 }
-
-                return listaPost;
             }
             catch (Exception ex)
             {
                 return null;
             }
-            
         }
 
         public void Adiciona(Post post)
@@ -59,6 +41,56 @@ namespace Blog.Models.Dao
                 cmd.ExecuteNonQuery();
             }
             
+        }
+
+        public IList<Post> BuscaCategoria(string categoria)
+        {
+            try
+            {
+                using (BlogContext ctx = new BlogContext())
+                {
+                    return ctx.Post.Where(x => x.Categoria.Contains(categoria)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public void Remove(int id)
+        {
+            try
+            {
+                using (BlogContext ctx = new BlogContext())
+                {
+                    Post post = ctx.Post.Find(id);
+                    ctx.Post.Remove(post);
+                    ctx.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void Atualiza(Post post)
+        {
+            using (BlogContext ctx = new BlogContext())
+            {
+                ctx.Entry(post).State = EntityState.Modified;
+                ctx.SaveChanges();
+            }
+        }
+
+        public Post FindPost(int id)
+        {
+            using (BlogContext ctx = new BlogContext())
+            {
+                return ctx.Post.Where(x => x.Id == id).FirstOrDefault();
+            }
         }
     }
 }
