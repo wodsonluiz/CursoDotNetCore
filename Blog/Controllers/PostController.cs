@@ -1,6 +1,8 @@
 ﻿using Blog.Models;
 using Blog.Models.Dao;
+using Blog.Providers;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace Blog.Controllers
 {
@@ -82,6 +84,11 @@ namespace Blog.Controllers
             PostDao dao = new PostDao();
             dao.Publica(id);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult AutoCompleteCategoria(string strTermo) 
+        {
+            
         }
     }
 }

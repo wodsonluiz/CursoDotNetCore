@@ -6,6 +6,7 @@
 @model List<Blog.Models.Post>;
 
 <h2>Index</h2>
+@Html.ActionLink("Incluir Post", "Novo");
 <table>
     <thead>
         <tr>
@@ -20,7 +21,7 @@
         @foreach (var p in Model)
         {
         <tr>
-            <td><a href="/Post/Visualiza/@p.Id">@p.Titulo</a></td>
+            <td>@Html.ActionLink(p.Titulo, "Visualiza", new { Id = p.Id });</td>
             <td>@p.Titulo</td>
             <td>@p.Resumo</td>
             <td>@p.Categoria</td>
@@ -34,8 +35,8 @@
                     @Html.Raw("Não");
                 }
             </td>
-            <td><a href="/Post/RemovePost/@p.Id">Remover</a></td>
-            <td><a href="/Post/PublicaPost/@p.Id">Publicar</a></td>
+            <td>@Html.ActionLink("Remover", "RemovePost", new { id = p.Id });</td>
+            <td>@Html.ActionLink("Publicar", "PublicaPost", new { id = p.Id });</td>
         </tr>
         }
     </tbody>
