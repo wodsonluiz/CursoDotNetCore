@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    [Migration("20190207003802_AdicionaInformacaoPublicacao")]
-    partial class AdicionaInformacaoPublicacao
+    [Migration("20190207231405_ValidacaoPost")]
+    partial class ValidacaoPost
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,13 +29,16 @@ namespace Blog.Migrations
 
                     b.Property<string>("Categoria");
 
-                    b.Property<DateTime?>("DataPublicação");
+                    b.Property<DateTime?>("DataPublicacao");
 
-                    b.Property<bool>("Publicado");
+                    b.Property<bool?>("Publicado");
 
-                    b.Property<string>("Resumo");
+                    b.Property<string>("Resumo")
+                        .IsRequired();
 
-                    b.Property<string>("Titulo");
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 

@@ -2,18 +2,26 @@
 @{
     ViewData["Title"] = "Novo";
 }
-
+@model Blog.Models.Post;
 <h2>Novo</h2>
 <form method="post" action="/Post/AdicionaPost">
     <label>
-        Titulo : <input type="text" name="Titulo" />
+        Titulo : <input type="text" name="Titulo" required maxlength="20" />
     </label>
+    @Html.ValidationMessage("Titulo");
     <label>
-        Resumo : <input type="text" name="Resumo" />
+        Resumo : <input type="text" name="Resumo" required />
     </label>
+    @Html.ValidationMessage("Resumo");
     <label>
         Categoria : <input type="text" name="Categoria" />
     </label>
+
     <input type="submit" value="Salvar" />
 </form>
+<script src="~/js/jquery-1.10.2.js"></script>
+<script src="~/js/jquery.validate.js"></script>
+<script>
+    $("form").validate();
+</script>
 

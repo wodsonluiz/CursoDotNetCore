@@ -37,7 +37,7 @@ namespace Blog.Models.Dao
                 cmd.Parameters.Add(new SqlParameter("Titulo", post.Titulo));
                 cmd.Parameters.Add(new SqlParameter("Resumo", post.Resumo));
                 cmd.Parameters.Add(new SqlParameter("Categoria", post.Categoria));
-
+               
                 cmd.ExecuteNonQuery();
             }
             
@@ -90,6 +90,17 @@ namespace Blog.Models.Dao
             using (BlogContext ctx = new BlogContext())
             {
                 return ctx.Post.Where(x => x.Id == id).FirstOrDefault();
+            }
+        }
+
+        public void Publica(int id)
+        {
+            using (BlogContext ctx = new BlogContext())
+            {
+                Post post = ctx.Post.Find(id);
+                post.Publicado = true;
+                post.DataPublicacao = DateTime.Now;
+                ctx.SaveChanges();
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Blog.Migrations
@@ -15,7 +16,9 @@ namespace Blog.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Titulo = table.Column<string>(nullable: true),
                     Resumo = table.Column<string>(nullable: true),
-                    Categoria = table.Column<string>(nullable: true)
+                    Categoria = table.Column<string>(nullable: true),
+                    DataPublicacao = table.Column<DateTime>(nullable: true),
+                    Publicado = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
