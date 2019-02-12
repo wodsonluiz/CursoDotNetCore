@@ -37,10 +37,10 @@ namespace Blog.Models.Dao
                 cmd.Parameters.Add(new SqlParameter("Titulo", post.Titulo));
                 cmd.Parameters.Add(new SqlParameter("Resumo", post.Resumo));
                 cmd.Parameters.Add(new SqlParameter("Categoria", post.Categoria));
-               
+
                 cmd.ExecuteNonQuery();
             }
-            
+
         }
 
         public IList<Post> BuscaCategoria(string categoria)
@@ -104,6 +104,29 @@ namespace Blog.Models.Dao
             }
         }
 
-        public 
+        // implementar o autocomplete
+
+        public List<Post> ListaPost()
+        {
+            using (BlogContext ctx = new BlogContext())
+            {
+                return ctx.Post.Where(x => x.Publicado == true).OrderByDescending(p => p.DataPublicacao).ToList();
+            }
+        }
+
+        public List<Post> ListaPeloTermo(string termo)
+        {
+            using (BlogContext ctx = new BlogContext())
+            {
+                if (string.IsNullOrEmpty(termo))
+                {
+                    return ctx.Post.Where(x => x.Publicado == true).ToList();
+                }
+                else
+                {
+                    return ctx.Post.Where(p => p.Publicado == true && (p.Titulo.Contains(termo) || p.Resumo.Contains(termo))).ToList();
+                }
+            }
+        }
     }
 }

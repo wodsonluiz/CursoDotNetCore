@@ -4,8 +4,9 @@ using Blog.Providers;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-namespace Blog.Controllers
+namespace Blog.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class PostController : Controller
     {
         public PostController()
@@ -86,9 +87,10 @@ namespace Blog.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult AutoCompleteCategoria(string strTermo) 
-        {
+        //implementar o autocomplete
+        //public IActionResult AutoCompleteCategoria(string strTermo) 
+        //{
             
-        }
+        //}
     }
 }

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model IList<Post>;
+
+<div>
+    <article>
+        @foreach(Blog.Models.Post p in Model)
+        {
+            <h1>@p.Titulo</h1>
+            <p>@p.Resumo</p>
+        }
+    </article>
+</div>
+

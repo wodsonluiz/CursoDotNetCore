@@ -3,16 +3,11 @@
     ViewData["Title"] = "Novo";
 };
 
-@model Blog.Models.Post;
+@model Post
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers;
 <h2>Novo</h2>
 
-<label asp-for="Titulo"></label>
-<input />
-
-
-
-@*@using (Html.BeginForm("AdicionaPost", "Post"))
+@using (Html.BeginForm("AdicionaPost", "Post"))
     {
         @Html.LabelFor(p => p.Titulo);
         @Html.TextBoxFor(p => p.Titulo);
@@ -27,7 +22,7 @@
         @Html.ValidationMessageFor(p => p.Categoria);
 
         <input type="submit" value="Salvar" />
-    }*@
+    }
 
 @*<form method="post" action="/Post/AdicionaPost">
         <label>

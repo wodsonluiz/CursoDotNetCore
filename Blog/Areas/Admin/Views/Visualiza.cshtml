@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Visualiza";
 }
-@model Blog.Models.Post;
+@model Post;
 
 <form action="/Post/EditaPost" method="post">
     <input type="hidden" name="id" value="@Model.Id" />

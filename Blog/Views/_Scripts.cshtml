@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "_Scripts";
+}
+
+@model Post
+<div>
+    <form asp-controller="Post" asp-action="Adiciona" method="post">
+        @Html.EditorFor(p => p)
+        <button type="submit">Cadastrar</button>
+    </form>
+</div>
+
+@section Scripts {
+    @Html.Partial("_Scripts")
+}
