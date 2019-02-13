@@ -19,7 +19,7 @@ using Blog.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"34f61489f4a8eba2fee17573b4af7078b3a3591f", @"/Views/Shared/Rodape.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a949051d1bacac6f02e289135a3092db5b291f49", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4caaead04638c82626dfbb4539d80a56f62dd94a", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Rodape : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

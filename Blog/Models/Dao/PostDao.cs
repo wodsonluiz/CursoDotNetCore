@@ -9,14 +9,18 @@ namespace Blog.Models.Dao
 {
     public class PostDao
     {
+        private BlogContext ctx;
+
+        public PostDao(BlogContext _ctx)
+        {
+            this.ctx = _ctx;
+        }
+
         public IList<Post> Lista()
         {
             try
             {
-                using (BlogContext ctx = new BlogContext())
-                {
-                    return ctx.Post.ToList();
-                }
+                return ctx.Post.ToList();
             }
             catch (Exception ex)
             {
@@ -40,17 +44,13 @@ namespace Blog.Models.Dao
 
                 cmd.ExecuteNonQuery();
             }
-
         }
 
         public IList<Post> BuscaCategoria(string categoria)
         {
             try
             {
-                using (BlogContext ctx = new BlogContext())
-                {
-                    return ctx.Post.Where(x => x.Categoria.Contains(categoria)).ToList();
-                }
+                return ctx.Post.Where(x => x.Categoria.Contains(categoria)).ToList();
             }
             catch (Exception ex)
             {
@@ -62,70 +62,51 @@ namespace Blog.Models.Dao
         {
             try
             {
-                using (BlogContext ctx = new BlogContext())
-                {
-                    Post post = ctx.Post.Find(id);
-                    ctx.Post.Remove(post);
-                    ctx.SaveChanges();
-                }
+                Post post = ctx.Post.Find(id);
+                ctx.Post.Remove(post);
+                ctx.SaveChanges();
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
         public void Atualiza(Post post)
         {
-            using (BlogContext ctx = new BlogContext())
-            {
-                ctx.Entry(post).State = EntityState.Modified;
-                ctx.SaveChanges();
-            }
+            ctx.Entry(post).State = EntityState.Modified;
+            ctx.SaveChanges();
         }
 
         public Post FindPost(int id)
         {
-            using (BlogContext ctx = new BlogContext())
-            {
-                return ctx.Post.Where(x => x.Id == id).FirstOrDefault();
-            }
+            return ctx.Post.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public void Publica(int id)
         {
-            using (BlogContext ctx = new BlogContext())
-            {
-                Post post = ctx.Post.Find(id);
-                post.Publicado = true;
-                post.DataPublicacao = DateTime.Now;
-                ctx.SaveChanges();
-            }
+            Post post = ctx.Post.Find(id);
+            post.Publicado = true;
+            post.DataPublicacao = DateTime.Now;
+            ctx.SaveChanges();
         }
 
         // implementar o autocomplete
 
         public List<Post> ListaPost()
         {
-            using (BlogContext ctx = new BlogContext())
-            {
-                return ctx.Post.Where(x => x.Publicado == true).OrderByDescending(p => p.DataPublicacao).ToList();
-            }
+            return ctx.Post.Where(x => x.Publicado == true).OrderByDescending(p => p.DataPublicacao).ToList();
         }
 
         public List<Post> ListaPeloTermo(string termo)
         {
-            using (BlogContext ctx = new BlogContext())
+            if (string.IsNullOrEmpty(termo))
             {
-                if (string.IsNullOrEmpty(termo))
-                {
-                    return ctx.Post.Where(x => x.Publicado == true).ToList();
-                }
-                else
-                {
-                    return ctx.Post.Where(p => p.Publicado == true && (p.Titulo.Contains(termo) || p.Resumo.Contains(termo))).ToList();
-                }
+                return ctx.Post.Where(x => x.Publicado == true).ToList();
+            }
+            else
+            {
+                return ctx.Post.Where(p => p.Publicado == true && (p.Titulo.Contains(termo) || p.Resumo.Contains(termo))).ToList();
             }
         }
     }

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+@model Usuario
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog do Wod</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/estilo.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <main id="login-form">
+            <h2>Blog do Wod</h2>
+            @Html.ValidationSummary()
+            @using (Html.BeginForm("Autentica", "Usuario", FormMethod.Post))
+            {
+                @Html.LabelFor(u => u.Nome)
+                @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
+
+                @Html.LabelFor(u => u.Senha)
+                @Html.PasswordFor(u => u.Senha, new { @class = "form-control" })
+
+                <input type="submit" value="Login" />
+            }
+        </main>
+    </div>
+</body>

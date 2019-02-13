@@ -7,18 +7,23 @@ namespace Blog.Providers
 {
     public class BlogContext : DbContext
     {
+        public BlogContext(DbContextOptions<BlogContext> options) : base(options)
+        {
+
+        }
+
         public DbSet<Post> Post { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables();
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
+        //    var builder = new ConfigurationBuilder()
+        //        .SetBasePath(Directory.GetCurrentDirectory())
+        //        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        //        .AddEnvironmentVariables();
 
-            IConfiguration configuration = builder.Build();
-            string stringConexao = configuration.GetConnectionString("Blog");
-            options.UseSqlServer(stringConexao);
-        }
+        //    IConfiguration configuration = builder.Build();
+        //    string stringConexao = configuration.GetConnectionString("Blog");
+        //    options.UseSqlServer(stringConexao);
+        //}
     }
 }

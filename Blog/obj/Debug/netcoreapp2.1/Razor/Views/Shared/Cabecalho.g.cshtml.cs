@@ -19,7 +19,7 @@ using Blog.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e31636c53dcbdb90d43fb4c0200ab8b553051808", @"/Views/Shared/Cabecalho.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a949051d1bacac6f02e289135a3092db5b291f49", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4caaead04638c82626dfbb4539d80a56f62dd94a", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Cabecalho : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #line hidden
@@ -57,7 +57,7 @@ using Blog.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(49, 164, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c58f67e999c14d1ba6c05b924b084875", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "459548b32ee547b2b47b2d8f4dd9917d", async() => {
                 BeginContext(55, 151, true);
                 WriteLiteral("\r\n    <div class=\"jumbotron\">\r\n        <h1>Blog do Wod</h1>\r\n        <p>\r\n            Blog sobre desenv e algumas coisas + \r\n        </p>\r\n    </div>\r\n");
                 EndContext();

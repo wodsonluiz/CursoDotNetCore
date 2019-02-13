@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Visualiza";
+}
+@model Post;
+
+<form action="/Admin/Post/EditaPost" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="hidden" name="dataPublicado" value="@Model.DataPublicacao" />
+
+    @Html.EditorFor(p => p)
+    
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+<script src="~/js/jquery-1.10.2.js"></script>
+<script src="~/js/jquery.validate.js"></script>
+<script>
+    debugger
+    $("form").validate();
+</script>
+
+

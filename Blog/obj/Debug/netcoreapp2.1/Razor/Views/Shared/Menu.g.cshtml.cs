@@ -19,7 +19,7 @@ using Blog.Models;
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b5f6d657cfc3b571477e6278864ffaea1b20fd3d", @"/Views/Shared/Menu.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a949051d1bacac6f02e289135a3092db5b291f49", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4caaead04638c82626dfbb4539d80a56f62dd94a", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Menu : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Home", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -62,7 +62,7 @@ using Blog.Models;
             WriteLiteral("\r\n\r\n\r\n<aside>\r\n    ");
             EndContext();
             BeginContext(61, 384, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5002a5d86bbe45f9ae6a9afff916b82d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b70781993a5b45978ec8cdb19b6ef918", async() => {
                 BeginContext(141, 297, true);
                 WriteLiteral(@"
         <div class=""input-group"">

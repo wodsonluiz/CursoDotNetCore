@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "_LayoutAdmin";
+}
+
+<head>
+    <meta name="viewport" content="widht=device-width, initial-scale=1.0" />
+    <title>Administração Blog do Wod</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/estilo-admin.css" rel="stylesheet" />
+    <script src="~/js/jquery-ui.js"></script>
+</head>
+<body>
+    @Html.Partial("MenuAdmin")
+    <main>
+        @RenderBody()
+    </main>
+    @RenderSection("Scripts", false)
+</body>
+

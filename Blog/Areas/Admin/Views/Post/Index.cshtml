@@ -5,9 +5,10 @@
 
 @model List<Post>;
 
-<h2>Index</h2>
-@Html.ActionLink("Incluir Post", "Novo");
-<table>
+<h2>Lista de Posts</h2>
+@Html.ActionLink("Incluir Post", "Novo", "Post", null, new { @class = "btn btn-primary"})
+<table class="table table-striped table-hover table-bordered" style="margin-top:10px">
+    <caption>Lista dos Posts cadastrados no blog.</caption>
     <thead>
         <tr>
             <th>Titulo</th>
@@ -21,7 +22,7 @@
         @foreach (var p in Model)
         {
         <tr>
-            <td>@Html.ActionLink(p.Titulo, "Visualiza", new { Id = p.Id });</td>
+            <td>@Html.ActionLink(p.Titulo, "Visualiza", new { Id = p.Id })</td>
             <td>@p.Titulo</td>
             <td>@p.Resumo</td>
             <td>@p.Categoria</td>
@@ -32,11 +33,11 @@
                 }
                 else
                 {
-                    @Html.Raw("Não");
+                    @Html.Raw("Não")
                 }
             </td>
-            <td>@Html.ActionLink("Remover", "RemovePost", new { id = p.Id });</td>
-            <td>@Html.ActionLink("Publicar", "PublicaPost", new { id = p.Id });</td>
+            <td>@Html.ActionLink("Remover", "RemovePost", new { id = p.Id })</td>
+            <td>@Html.ActionLink("Publicar", "PublicaPost", new { id = p.Id })</td>
         </tr>
         }
     </tbody>
