@@ -1,8 +1,8 @@
-﻿
+﻿@model LoginViewModel
 @{
-    ViewData["Title"] = "Login";
+    Layout = null;
 }
-@model Usuario
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,13 +17,13 @@
             @Html.ValidationSummary()
             @using (Html.BeginForm("Autentica", "Usuario", FormMethod.Post))
             {
-                @Html.LabelFor(u => u.Nome)
-                @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
+                @Html.LabelFor(u => u.LoginName, "Login")
+                @Html.TextBoxFor(u => u.LoginName, new { @class = "form-control" })
 
                 @Html.LabelFor(u => u.Senha)
                 @Html.PasswordFor(u => u.Senha, new { @class = "form-control" })
 
-                <input type="submit" value="Login" />
+                <input type="submit" value="Login" style="margin-top:10px" />
             }
         </main>
     </div>

@@ -27,7 +27,7 @@ namespace Blog
                 services.Configure<CookiePolicyOptions>(options =>
                 {
                     // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                    options.CheckConsentNeeded = context => true;
+                    options.CheckConsentNeeded = context => false;
                     options.MinimumSameSitePolicy = SameSiteMode.None;
                 });
 
@@ -39,6 +39,9 @@ namespace Blog
 
                 //Cria nossa Dao ja implementando o context
                 services.AddTransient<PostDao>();
+                services.AddTransient<UsuarioDao>();
+
+                services.AddSession();
             }
             catch (System.Exception ex)
             {
@@ -62,6 +65,7 @@ namespace Blog
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();// adiciona session na aplicação
 
             app.UseMvc(routes =>
             {

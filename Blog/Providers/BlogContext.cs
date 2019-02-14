@@ -13,6 +13,7 @@ namespace Blog.Providers
         }
 
         public DbSet<Post> Post { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder options)
         //{

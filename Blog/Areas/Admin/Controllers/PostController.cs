@@ -1,10 +1,12 @@
-﻿using Blog.Models;
+﻿using Blog.Filter;
+using Blog.Models;
 using Blog.Models.Dao;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AutorizacaoFilter]
     public class PostController : Controller
     {
         private PostDao dao;
