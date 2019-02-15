@@ -45,6 +45,14 @@ namespace Blog.Models.Dao
                 cmd.ExecuteNonQuery();
             }
         }
+        
+        public void Adiciona(Post post, Usuario usuario)
+        {
+            ctx.Usuarios.Attach(usuario);
+            post.Autor = usuario;
+            ctx.Post.Add(post);
+            ctx.SaveChanges();
+        }
 
         public IList<Post> BuscaCategoria(string categoria)
         {

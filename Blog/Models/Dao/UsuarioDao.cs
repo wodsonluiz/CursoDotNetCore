@@ -19,5 +19,11 @@ namespace Blog.Models.Dao
             return ctx.Usuarios.Where(usuario => usuario.Nome.Equals(login) && usuario.Senha.Equals(senha)).
                 FirstOrDefault<Usuario>();
         }
+
+        public void Adicona(Usuario usuario)
+        {
+            ctx.Usuarios.Add(usuario);
+            ctx.SaveChanges();
+        }
     }
 }

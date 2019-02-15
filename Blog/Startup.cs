@@ -71,6 +71,11 @@ namespace Blog
             {
 
                 routes.MapRoute(
+                  name: "areasApi",
+                  template: "{area:exists}/{controller=PostApi}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
                  name: "areaRoute",
                  template: "{area:exists}/{controller=Post}/{action=Index}/{id?}"
                );
@@ -78,7 +83,7 @@ namespace Blog
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
-               
+
             });
 
         }

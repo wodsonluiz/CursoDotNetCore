@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Usuario";
+}
+
+@model RegistroViewModel
+
+@Html.LabelFor(u => u.LoginName)
+@Html.TextBoxFor(u => u.LoginName, new { @class = "form-control" })
+@Html.ValidationMessageFor(u => u.LoginName)
+
+@Html.LabelFor(u => u.Email)
+@Html.TextBoxFor(u => u.Email, new { @class = "form-control", rows = 6 })
+@Html.ValidationMessageFor(u => u.Email)
+
+@Html.LabelFor(u => u.Senha)
+@Html.PasswordFor(u => u.Senha, new { @class = "form-control" })
+@Html.ValidationMessageFor(u => u.Senha)
+

@@ -57,7 +57,7 @@ using Blog.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(49, 164, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "601b803c83b74bf1849db6911ab64c51", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd4fc97243924e0ab6ac2ee256781ad2", async() => {
                 BeginContext(55, 151, true);
                 WriteLiteral("\r\n    <div class=\"jumbotron\">\r\n        <h1>Blog do Wod</h1>\r\n        <p>\r\n            Blog sobre desenv e algumas coisas + \r\n        </p>\r\n    </div>\r\n");
                 EndContext();

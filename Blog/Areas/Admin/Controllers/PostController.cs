@@ -1,7 +1,9 @@
 ﻿using Blog.Filter;
 using Blog.Models;
 using Blog.Models.Dao;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Blog.Areas.Admin.Controllers
 {
@@ -33,7 +35,10 @@ namespace Blog.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                dao.Adiciona(novo);
+                string usuarioJson = HttpContext.Session.GetString("usuario");
+                Usuario logado = JsonConvert.DeserializeObject<Usuario>(usuarioJson);
+
+                dao.Adiciona(novo, logado);
                 return RedirectToAction("Index");
             }
             else
