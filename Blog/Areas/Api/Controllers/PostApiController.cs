@@ -44,5 +44,38 @@ namespace Blog.Areas.Api.Controllers
 
             return BadRequest(ModelState);
         }
+
+        [HttpPut]
+        [Route("Altera")]
+        public IActionResult AtualizaPost(int id, [FromBody] Post post)
+        {
+            Post postBanco = dao.FindPost(id);
+
+            if (postBanco == null)
+            {
+                return NotFound();
+            }
+
+            postBanco.Titulo = post.Titulo;
+            postBanco.Resumo = post.Resumo;
+            postBanco.Categoria = post.Categoria;
+            postBanco.Publicado = post.Publicado;
+            postBanco.DataPublicacao = post.DataPublicacao;
+
+            dao.Atualiza(postBanco);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("Deletar")]
+        public IActionResult DeletePost(int id)
+        {
+            if (dao.FindPost(id) == null)
+            {
+                return NotFound();
+            }
+            dao.Remove(id);
+            return NoContent();
+        }
     }
 }
